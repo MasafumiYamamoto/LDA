@@ -1,6 +1,7 @@
 from gensim import corpora, models, similarities
 import csv
 import textedit
+pas=""
 
 # remove common words and tokenize
 stopfile=open("stopwords_en.csv","r")
@@ -35,7 +36,7 @@ print("texts fin")
 
 dictionary = corpora.Dictionary(texts)
 #dictionary.save('/deerwester.dict') # store the dictionary, for future reference
-dictionary.save_as_text("C:\Users\masafumi\Desktop\LDA/nNVreivew.dict")
+dictionary.save_as_text(pas+"nNVreivew.dict")
 
 corpus=[dictionary.doc2bow(text) for text in texts]
-corpora.MmCorpus.serialize("C:\Users\masafumi\Desktop\LDA/nNVreivew.mm", corpus)
+corpora.MmCorpus.serialize(pas+"nNVreivew.mm", corpus)

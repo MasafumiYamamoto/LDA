@@ -2,7 +2,7 @@ from gensim import corpora, models, similarities
 import csv
 import textedit
 import time
-pas="C:\Users\masafumi\Desktop\LDA/"
+pas=""
 
 print "mkcorpus_start",time.ctime()
 # remove common words and tokenize
@@ -47,9 +47,9 @@ dictionary.filter_extremes(no_below=10,no_above=0.5)
 print "dictionary cut fin",time.ctime(),len(dictionary.token2id)
 
 dictionary.save("nNVreview.dict")
-dictionary.save_as_text("nNVreview_text.dict")
+dictionary.save_as_text(pas+"nNVreview_text.dict")
 
 corpus=[dictionary.doc2bow(text) for text in texts]
-corpora.MmCorpus.serialize("nNVreview.mm", corpus)
+corpora.MmCorpus.serialize(pas+"nNVreview.mm", corpus)
 #print corpus
 print "mk_corpus fin",time.ctime()
