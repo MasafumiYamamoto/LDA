@@ -3,12 +3,12 @@ import csv
 import textedit
 pas=""
 
-dictionary = corpora.Dictionary.load(pas+"nNVreivew.dict")
-corpus = corpora.MmCorpus(pas+"nNVreivew.mm")
+dictionary = corpora.Dictionary.load(pas+"NV/NVreview.dict")
+corpus = corpora.MmCorpus(pas+"NV/NVreview.mm")
 
 
 #use LDA
-lda = models.LdaModel.load(pas+"NVreview.lda")
+lda = models.LdaModel.load(pas+"NV/NVreview.lda")
 
 
 #calc topic sim
@@ -33,8 +33,8 @@ for line in idata:
 	vec_bow = dictionary.doc2bow(doc.lower().split())
 	vec_lda = lda[vec_bow]
 	slist=[0]*50
-	for num in range(0,len(vec_lda):
-		slist[vec_lda[num][0]]=vec_lda[1]
+	for num in range(0,len(vec_lda)):
+		slist[vec_lda[num][0]]=vec_lda[num][1]
 	wlist=wlist+slist
 	writer.writerow(wlist)
 
