@@ -1,7 +1,8 @@
 from gensim import corpora, models, similarities
+pas=""
 
-dictionary = corpora.Dictionary.load("C:\Users\masafumi\Desktop\LDA/nNVreivew.dict")
-corpus = corpora.MmCorpus("C:\Users\masafumi\Desktop\LDA/nNVreivew.mm")
+dictionary = corpora.Dictionary.load(pas+"nNVreivew.dict")
+corpus = corpora.MmCorpus(pas+"nNVreivew.mm")
 
 tfidf = models.TfidfModel(corpus) # step 1 -- initialize a modl
 corpus_tfidf=tfidf[corpus]
@@ -11,5 +12,5 @@ corpus_lda=lda[corpus_tfidf]
 print lda
 #print corpus_lda
 
-lda.save("C:\Users\masafumi\Desktop\LDA/nNVreivew.lda")
+lda.save(pas+"nNVreivew.lda")
 
