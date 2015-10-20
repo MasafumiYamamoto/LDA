@@ -17,6 +17,7 @@ for i in range(0,10):
     header.append("tw"+str(i).zfill(2))
 writer.writerow(header)
 
+
 for topic in range(0,lsi.num_topics):
     wlist=[]
     wlist.append(str(topic).zfill(2))
