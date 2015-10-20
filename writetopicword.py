@@ -3,11 +3,9 @@ import gensim
 
 #file pass
 pas=""
-
 #prepare
 dictionary=gensim.corpora.Dictionary.load(pas+"/nNV/nNVreview.dict")
 corpus=gensim.corpora.MmCorpus(pas+"nNVreview.mm")
-
 #use LDA
 lda=gensim.models.LdaModel.load(pas+"nNV/nNVreview.lda")
 
