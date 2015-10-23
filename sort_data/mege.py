@@ -24,6 +24,8 @@ for num in range(0,int(topicnum)):
 writer.writerow(header)
 slist=glob.glob(spas+"/*")
 subnum=0
+revnum=0
+print "slist",len(slist)
 for shop in slist:
     wlist=[]
     tlist=numpy.array([0]*topicnum)
@@ -31,9 +33,10 @@ for shop in slist:
     idata=csv.reader(ifile)
     snum=0
     for line in idata:
+        revnum=revnum+1
         bus_id=line[2]
-        user_id=line[1]
-        if(user_id not in rlist):
+        rev_id=line[0]
+        if(rev_id not in rlist):
             if(int(line[3])>3):
                 tlist=tlist+numpy.array(map(float,line[5:]))
                 snum=snum+1
@@ -47,7 +50,7 @@ for shop in slist:
     writer.writerow([bus_id]+list(tlist))
     ifile.close()
     snum=snum+1
-    if(snum%1000==0):
-        print snum
+    if(revnum%1000==0):
+        print revnum
 print "subnum",subnum
 wfile.close()
