@@ -2,7 +2,7 @@ import csv
 import collections
 import time
 
-path="C:\Users\masafumi\Desktop\LDAresult"
+path=""
 ifile=open(path+"/train_nNV/topic_200/nNVrevtopic200_LDA.csv","r")
 idata=csv.reader(ifile)
 idata.next()
