@@ -2,10 +2,11 @@ import csv
 import collections
 import time
 
-ifile=open("train_nNV/nNVrevtopic_LDA.csv","r")
+path="C:\Users\masafumi\Desktop\LDAresult"
+ifile=open(path+"/train_nNV/topic_200/nNVrevtopic200_LDA.csv","r")
 idata=csv.reader(ifile)
 idata.next()
-rfile=open("NVreview.csv","r")
+rfile=open(path+"/NVreview.csv","r")
 rdata=csv.reader(rfile)
 rdata.next()
 rlist=collections.Counter()
@@ -15,7 +16,7 @@ for line in rdata:
 print len(rlist)
 k=0
 for line in idata:
-    wfile=open("train_nNV/business_LDA/"+line[1]+".csv","ab")
+    wfile=open(path+"/train_nNV/topic_200/business_LDA/"+line[1]+".csv","ab")
     writer=csv.writer(wfile)
     wlist=rlist[line[0]]
     wlist=wlist+line[2:]
