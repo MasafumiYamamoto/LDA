@@ -1,7 +1,7 @@
 from gensim import corpora, models, similarities
 import csv
 import textedit
-pas=""
+pas="
 
 dictionary = corpora.Dictionary.load(pas+"NV/NVreview.dict")
 corpus = corpora.MmCorpus(pas+"NV/NVreview.mm")
