@@ -3,7 +3,7 @@ import glob
 import numpy
 import collections
 
-print "file pass"
+print "busfile pass"
 spas=raw_input()
 print "topicnum"
 topicnum=int(raw_input())

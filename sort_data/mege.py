@@ -4,11 +4,12 @@ import numpy
 import collections
 
 print "file pass"
-spas=raw_input()
+#spas=raw_input()
+spas="C:\Users/masafumi/Desktop/LDAresult/train_nNV/topic_200/business_LDA"
 print "topicnum"
 topicnum=int(raw_input())
 
-rfile=open("subrev_1000.csv","r")
+rfile=open("C:\Users\masafumi\Desktop\LDAresult/subrev_1000.csv","r")
 rdata=csv.reader(rfile)
 rdata.next()
 rlist=collections.Counter()
@@ -16,7 +17,7 @@ for line in rdata:
     rlist[line[0]]=1
 print "rlist",len(rlist)
 
-wfile=open("mergeLDA_r"+str(topicnum)+".csv","wb")
+wfile=open("mergeLDA_rnt"+str(topicnum)+".csv","wb")
 writer=csv.writer(wfile)
 header=["bus_id"]
 for num in range(0,int(topicnum)):
