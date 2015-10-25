@@ -9,7 +9,8 @@ N=raw_input()
 wfile=open("topic"+str(N)+".csv","wb")
 wri=csv.writer(wfile)
 wri.writerow(["revid","mybus","ranking","topscore","topbus","myscore"])
-revlist=glob.glob("C:/Users/masafumi/Desktop/LDAresult/train_nNV/topic_200/res/*")
+revlist=glob.glob("C:/Users/masafumi/Desktop/Lresult/LDAresult/train_nNV/topic_50/res50/*")
+revlist=glob.glob("res/*")
 l=0
 for review in revlist:
 	ifile=open(review,"r")

@@ -6,8 +6,7 @@ import math
 import collections
 import glob
 import numpy
-
-ifile=open("C:/Users/masafumi/Desktop/LDAresult/train_nNV/topic_200/subrev_1000_topic200.csv","r")
+ifile=open("C:/Users/masafumi/Desktop/Lresult/LDAresult/train_nNV/topic_50/subrev_1000_topic50.csv","r")
 idata=csv.reader(ifile)
 ilist=collections.Counter()
 ilen=collections.Counter()
@@ -21,8 +20,7 @@ for line in idata:
 	irate[line[0]]=line[3]
 print "list",len(ilist),len(ilist[line[0]])
 #print ilen
-
-sfile=open("C:/Users/masafumi/Desktop/LDAresult/train_nNV/topic_200/mergeLDA_rnt200_subrev.csv","r")
+sfile=open("C:/Users/masafumi/Desktop/Lresult/LDAresult/train_nNV/topic_50/mergeLDA_nrnt50.csv","r")
 sdata=csv.reader(sfile)
 slist=collections.Counter()
 slen=collections.Counter()

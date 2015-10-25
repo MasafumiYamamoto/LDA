@@ -5,11 +5,11 @@ import collections
 
 print "file pass"
 #spas=raw_input()
-spas="C:\Users/masafumi/Desktop/LDAresult/train_nNV/topic_200/business_LDA"
+spas="C:/Users/masafumi/Desktop/Lresult/LDAresult/train_nNV/topic_50/business_LDA_50"
 print "topicnum"
 topicnum=int(raw_input())
 
-rfile=open("C:\Users\masafumi\Desktop\LDAresult/subrev_1000.csv","r")
+rfile=open("C:/Users/masafumi/Desktop/Lresult/subrev_1000.csv","r")
 rdata=csv.reader(rfile)
 rdata.next()
 rlist=collections.Counter()
@@ -38,14 +38,18 @@ for shop in slist:
         bus_id=line[2]
         rev_id=line[0]
         if(rev_id not in rlist):
-            if(int(line[3])>3):
-                tlist=tlist+numpy.array(map(float,line[5:]))
-                snum=snum+1
-            elif(int(line[3])<3):
-                tlist=tlist-numpy.array(map(float,line[5:]))
-                snum=snum+1
-        else:
+            tlist=tlist+numpy.array(map(float,line[5:]))
+            snum=snum+1
             subnum=subnum+1
+#
+#            if(int(line[3])>3):
+#                tlist=tlist+numpy.array(map(float,line[5:]))
+#                snum=snum+1
+#            elif(int(line[3])<3):
+#                tlist=tlist-numpy.array(map(float,line[5:]))
+#                snum=snum+1
+#        else:
+#            subnum=subnum+1
     if(snum>0):
         tlist=tlist/snum
     writer.writerow([bus_id]+list(tlist))
