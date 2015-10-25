@@ -2,12 +2,12 @@ import csv
 import gensim
 
 #file pass
-pas=""
+pas="C:/Users/masafumi/Desktop/Lresult/"
 #prepare
-dictionary=gensim.corpora.Dictionary.load(pas+"/nNV/nNVreview.dict")
+dictionary=gensim.corpora.Dictionary.load(pas+"nNVreview.dict")
 corpus=gensim.corpora.MmCorpus(pas+"nNVreview.mm")
 #use LDA
-lda=gensim.models.LdaModel.load(pas+"nNV/nNVreview.lda")
+lda=gensim.models.LsiModel.load("C:/Users/masafumi/Desktop/Lresult/LSIresult/train_nNV/topic_200/nNVreview200.lsi")
 
 wfile=open("topicword.csv","wb")
 writer=csv.writer(wfile)

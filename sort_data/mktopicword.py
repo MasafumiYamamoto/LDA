@@ -9,8 +9,8 @@ vlist=collections.Counter()
 vfile=open("C:/Users/masafumi/Desktop/Lresult/scmodoki100_5.csv","r")
 vdata=csv.reader(vfile)
 for line in vdata:
-    vlist[str(line[0])]=numpy.array(line[1:])
-print "vlist fin",len(vlist)
+    vlist[str(line[0])]=numpy.array(map(float,line[1:]))
+print "vlist fin"
 vfile.close()
 
 wfile=open("LDA50topicword.csv","wb")
@@ -20,16 +20,14 @@ ifile=open("C:/Users/masafumi/Desktop/Lresult/LDAresult/train_nNV/topic_50/nNV_t
 idata=csv.reader(ifile)
 idata.next()
 for line in idata:
-    tlist[line[0]]=[0]*int(topic_num)
-    vec=numpy.array([0]*int(topic_num))
-    for t in range(0,int(topic_num)):
-        print line[2*t+1]
+    tlist=[0]*100
+    vec=[0]*10
+    for t in range(0,10):
         vec[t]=float(line[2*t+1])
     vec=vec/numpy.linalg.norm(vec)
-    for t in range(0,int(topic_num)):
-        tlist[line[0]]=tlist[line[0]]+vec[t]*vlist[str(2*t+1)]
+    for t in range(0,10):
+        tlist=tlist+vec[t]*vlist[str(line[2*t+2])]
 #        tlist[line[0]]=tlist[line[0]]+float(line[2*t+1])*vlist[str(2*t+1)]
-    writer.writerow([t]+list(tlist[line[0]]))
-    print "line fin",line[0]
+    writer.writerow([line[0]]+list(tlist))
 ifile.close()
 wfile.close()
