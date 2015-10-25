@@ -5,7 +5,7 @@ import collections
 
 print "file pass"
 #spas=raw_input()
-spas="C:/Users/masafumi/Desktop/Lresult/LDAresult/train_nNV/topic_50/business_LDA_50"
+spas="C:/Users/masafumi/Desktop/Lresult/LSIresult/train_nNV/topic_50/business_LSI"
 print "topicnum"
 topicnum=int(raw_input())
 
@@ -17,7 +17,7 @@ for line in rdata:
     rlist[line[0]]=1
 print "rlist",len(rlist)
 
-wfile=open("mergeLDA_rnt"+str(topicnum)+".csv","wb")
+wfile=open("mergeLSI_rnt"+str(topicnum)+".csv","wb")
 writer=csv.writer(wfile)
 header=["bus_id"]
 for num in range(0,int(topicnum)):
@@ -38,18 +38,18 @@ for shop in slist:
         bus_id=line[2]
         rev_id=line[0]
         if(rev_id not in rlist):
-            tlist=tlist+numpy.array(map(float,line[5:]))
-            snum=snum+1
-            subnum=subnum+1
-#
-#            if(int(line[3])>3):
-#                tlist=tlist+numpy.array(map(float,line[5:]))
-#                snum=snum+1
-#            elif(int(line[3])<3):
-#                tlist=tlist-numpy.array(map(float,line[5:]))
-#                snum=snum+1
-#        else:
+#            tlist=tlist+numpy.array(map(float,line[5:]))
+#            snum=snum+1
 #            subnum=subnum+1
+#
+            if(int(line[3])>3):
+                tlist=tlist+numpy.array(map(float,line[5:]))
+                snum=snum+1
+            elif(int(line[3])<3):
+                tlist=tlist-numpy.array(map(float,line[5:]))
+                snum=snum+1
+        else:
+            subnum=subnum+1
     if(snum>0):
         tlist=tlist/snum
     writer.writerow([bus_id]+list(tlist))

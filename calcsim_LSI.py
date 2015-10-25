@@ -1,26 +1,31 @@
 from gensim import corpora, models, similarities
 import csv
 import textedit
-pas="C:\Users\masafumi\Desktop\Lresult/"
+import time
+
+print "start",time.ctime()
+pas="C:/Users/masafumi/Desktop/Lresult/"
+print "topic_num"
+topic_num=raw_input()
 
 dictionary = corpora.Dictionary.load(pas+"nNVreview.dict")
 corpus = corpora.MmCorpus(pas+"nNVreview.mm")
 
 #use LSI
-lsi = models.LsiModel.load(pas+"LSIresult/train_nNV/topic_200/nNVreview200.lsi")
+lsi = models.LsiModel.load(pas+"LSIresult/train_nNV/topic_"+str(topic_num)+"/nNVreview"+str(topic_num)+".lsi")
 
 #calc topic sim
 header=[]
 header.append("rev_id")
 header.append("bus_id")
-for num in range(1,201):
-	header.append("t"+str(num))
+for num in range(0,int(topic_num)):
+	header.append("t"+str(num).zfill(int(topic_num)/10))
 
-wfile=open("nNVrevtopic_LSI_200.csv","wb")
+wfile=open("nNVrevtopic_LSI_"+str(topic_num)+".csv","wb")
 writer=csv.writer(wfile)
 writer.writerow(header)
 
-#NVreview:[review_id,user_id,bus_id,stars,date,text]
+"NVreview.csv:[review_id,user_id,business_id,stars,date,texts]"
 ifile=open(pas+"NVreview.csv","r")
 idata=csv.reader(ifile)
 idata.next()
@@ -31,12 +36,17 @@ for line in idata:
 	wlist.append(line[2])
 	doc=textedit.textedit(line[5])
 	vec_bow = dictionary.doc2bow(doc.lower().split())
-vec_lsi = lsi[vec_bow]
-slist=[0]*50
-for num in range(0,len(vec_lda)):
-	slist[vec_lsi[num][0]]=vec_lsi[num][1]
-wlist=wlist+slist
-writer.writerow(wlist)
+	vec_lsi = lsi[vec_bow]
+        ###
+	slist=[0]*int(topic_num)
+	for num in range(0,len(vec_lsi)):
+		slist[vec_lsi[num][0]]=vec_lsi[num][1]
+	wlist=wlist+slist
+	writer.writerow(wlist)
+        k=k+1
+	if(k%1000==0):
+		print k,time.ctime()
 
 ifile.close()
 wfile.close()
+print "fin",time.ctime()
