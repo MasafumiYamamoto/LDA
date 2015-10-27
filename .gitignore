@@ -4,6 +4,7 @@
 #csv file
 *.csv
 *.pyc
+!sortdata/
 
 # User-specific files
 *.suo
