@@ -8,6 +8,7 @@ spas="D:/Lresult/LSIresult/train_nNV/topic_500/business"
 print "topicnum"
 topicnum=int(raw_input())
 
+
 rfile=open("subrev_1000.csv","r")
 rdata=csv.reader(rfile)
 rdata.next()

@@ -3,6 +3,7 @@
 
 #csv file
 *.csv
+*.pyc
 
 # User-specific files
 *.suo
