@@ -6,7 +6,11 @@ import math
 import collections
 import glob
 import numpy
-ifile=open("C:/Users/masafumi/Desktop/Lresult/LDAresult/train_nNV/topic_50/subrev_1000_topic50.csv","r")
+pas="D:/Lresult/"
+print "topicnum"
+topicnum=raw_input()
+
+ifile=open(pas+"LSIresult/train_nNV/topic_"+str(topicnum)+"/subrev_1000_topic"+str(topicnum)+".csv","r")
 idata=csv.reader(ifile)
 ilist=collections.Counter()
 ilen=collections.Counter()
@@ -20,7 +24,7 @@ for line in idata:
 	irate[line[0]]=line[3]
 print "list",len(ilist),len(ilist[line[0]])
 #print ilen
-sfile=open("C:/Users/masafumi/Desktop/Lresult/LSIresult/train_nNV/topic_50/mergeLSI_rnt50.csv","r")
+sfile=open(pas+"LSIresult/train_nNV/topic_"+str(topicnum)+"/mergeLSI_nrnt"+str(topicnum)+".csv","r")
 sdata=csv.reader(sfile)
 slist=collections.Counter()
 slen=collections.Counter()
@@ -34,7 +38,7 @@ print "slen",len(slist),len(slist[line[0]])
 l=0
 for line in ilist:
 	l=l+1
-	outfile=open("res/"+line+".csv","wb")
+	outfile=open("resnrnt/"+line+".csv","wb")
 	outwriter=csv.writer(outfile)
 	outwriter.writerow(["revid","shop","sim","seikai"])
 	for shop in slist:

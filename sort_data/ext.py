@@ -4,7 +4,7 @@ import numpy
 import collections
 
 print "busfile pass"
-spas="C:/Users/masafumi/Desktop/Lresult/LSIresult/train_nNV/topic_50/business_LSI"
+spas="D:/Lresult/LSIresult/train_nNV/topic_500/business"
 print "topicnum"
 topicnum=int(raw_input())
 
