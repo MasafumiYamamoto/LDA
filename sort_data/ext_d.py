@@ -5,7 +5,6 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
     import collections
     import time
 
-    spas=str(spas_)
     tnum=int(tnum_)
     #path="D:/Lresult/"
     path=str(rootpath_)

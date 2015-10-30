@@ -16,7 +16,7 @@ tflag_=0
 infile_="nNVrevtopicover4b6_t300_LSI.csv"
 
 print "start",time.ctime()
-mkeachbus_d.main(rootpath_,tnum_,bnum_,rflag_,tflag_,infile_)
+#mkeachbus_d.main(rootpath_,tnum_,bnum_,rflag_,tflag_,infile_)
 print "mkeachbus_d fin",time.ctime()
 ext_d.main(rootpath_,tnum_,bnum_,rflag_,tflag_)
 print "ext_d fin",time.ctime()
