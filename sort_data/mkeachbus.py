@@ -6,9 +6,8 @@ print "topic_num"
 topic_num=raw_input()
 print "LDA or LSI"
 lmodel=raw_input()
-
 path="D:/Lresult/"
-ifile=open(path+lmodel+"result/train_nNV/topic_"+str(topic_num)+"/nNVrevtopic_"+lmodel+"_"+str(topic_num)+".csv","r")
+ifile=open(path+"over4/nNVrevtopicover4_t"+str(topic_num)+"_LSI.csv","r")
 idata=csv.reader(ifile)
 idata.next()
 rfile=open(path+"NVreview.csv","r")
@@ -21,7 +20,7 @@ for line in rdata:
 print len(rlist),time.ctime()
 k=0
 for line in idata:
-    wfile=open(path+lmodel+"result/train_nNV/topic_"+str(topic_num)+"/business/"+line[1]+".csv","ab")
+    wfile=open(path+"over4/b1t"+str(topic_num)+"_business/"+line[1]+".csv","ab")
     writer=csv.writer(wfile)
     wlist=rlist[line[0]]
     wlist=wlist+line[2:]

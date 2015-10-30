@@ -7,10 +7,10 @@ print "topicnum"
 N=raw_input()
 
 pas="D:/Lresult/"
-wfile=open("topic"+str(N)+".csv","wb")
+wfile=open(pas+"over4/nrntb1t"+str(N)+".csv","wb")
 wri=csv.writer(wfile)
 wri.writerow(["revid","mybus","ranking","topscore","topbus","myscore"])
-revlist=glob.glob(pas+"LSIresult/train_nNV/topic_500/resnrnt/*")
+revlist=glob.glob(pas+"over4/resb1t500nrnt/*")
 l=0
 for review in revlist:
 	ifile=open(review,"r")

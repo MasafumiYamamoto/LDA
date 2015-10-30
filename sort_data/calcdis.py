@@ -10,7 +10,7 @@ pas="D:/Lresult/"
 print "topicnum"
 topicnum=raw_input()
 
-ifile=open(pas+"LSIresult/train_nNV/topic_"+str(topicnum)+"/subrev_1000_topic"+str(topicnum)+".csv","r")
+ifile=open(pas+"over4/subrev_1000_b1t"+str(topicnum)+"_LSI.csv","r")
 idata=csv.reader(ifile)
 ilist=collections.Counter()
 ilen=collections.Counter()
@@ -24,7 +24,7 @@ for line in idata:
 	irate[line[0]]=line[3]
 print "list",len(ilist),len(ilist[line[0]])
 #print ilen
-sfile=open(pas+"LSIresult/train_nNV/topic_"+str(topicnum)+"/mergeLSI_nrnt"+str(topicnum)+".csv","r")
+sfile=open(pas+"over4/mergeLSI_nrnt_over4b1t"+str(topicnum)+".csv","r")
 sdata=csv.reader(sfile)
 slist=collections.Counter()
 slen=collections.Counter()
@@ -38,7 +38,7 @@ print "slen",len(slist),len(slist[line[0]])
 l=0
 for line in ilist:
 	l=l+1
-	outfile=open("resnrnt/"+line+".csv","wb")
+	outfile=open(pas+"over4/resb1t500nrnt/"+line+".csv","wb")
 	outwriter=csv.writer(outfile)
 	outwriter.writerow(["revid","shop","sim","seikai"])
 	for shop in slist:

@@ -5,7 +5,7 @@ import collections
 
 print "file pass"
 #spas=raw_input()
-spas="D:/Lresult/LSIresult/train_nNV/topic_500/business"
+spas="D:/Lresult/over4/b1t500_business"
 print "topicnum"
 topicnum=int(raw_input())
 
