@@ -18,9 +18,9 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
 	wri.writerow(["revid","mybus","ranking","topscore","topbus","myscore"])
 	revlist=[]
 	if(rflag!=1):
-		revlist=glob.glob(pas+"resb"+str(bnum)+"t"+str(N)+"nrnt/*")
+		revlist=glob.glob(pas+"resnrnt_b"+str(bnum)+"t"+str(N)+"/*")
 	elif(rflag==1):
-		revlist=glob.glob(pas+"resb"+str(bnum)+"t"+str(N)+"rnt/*")
+		revlist=glob.glob(pas+"resrnt_b"+str(bnum)+"t"+str(N)+"/*")
 	l=0
 	for review in revlist:
 		ifile=open(review,"r")

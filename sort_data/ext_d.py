@@ -17,7 +17,7 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
     for line in rdata:
         rlist[line[0]]=1
     #print "rlist",len(rlist),time.ctime()
-    wfile=open(path+"subrev_1000_b"+str(bnum)+"t"+str(tnum)+".csv","wb")
+    wfile=open(path+"subrev1000_b"+str(bnum)+"t"+str(tnum)+".csv","wb")
     writer=csv.writer(wfile)
     header=["rev_id","user_id","bus_id","rating","date"]
     for num in range(0,int(tnum)):

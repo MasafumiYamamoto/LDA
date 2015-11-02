@@ -6,6 +6,7 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
 
     path=rootpath_
     tnum=int(tnum_)
+    bnum=int(bnum_)
     rflag=int(rflag_)
     tflag=int(tflag_)
 
@@ -18,15 +19,15 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
     #print "rlist",len(rlist)
     wfile=open(path+"hoge.csv","wb")
     if(rflag!=1):
-        wfile=open(path+"mergeLSI_nrnt"+str(tnum)+".csv","wb")
+        wfile=open(path+"mergeLSI_nrnt_b"+str(bnum)+"t"+str(tnum)+".csv","wb")
     elif(rflag==1):
-        wfile=open(path+"mergeLSI_rnt"+str(tnum)+".csv","wb")
+        wfile=open(path+"mergeLSI_rnt_b"+str(bnum)+"t"+str(tnum)+".csv","wb")
     writer=csv.writer(wfile)
     header=["bus_id"]
     for num in range(0,int(tnum)):
         header.append("t"+str(num).zfill(3))
     writer.writerow(header)
-    slist=glob.glob(spas+"/*")
+    slist=glob.glob(path+"b"+str(bnum)+"t"+str(tnum)+"_business/*")
     subnum=0
     revnum=0
     print "slist",len(slist)

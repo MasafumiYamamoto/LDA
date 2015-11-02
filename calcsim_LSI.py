@@ -4,15 +4,15 @@ import textedit
 import time
 
 print "start",time.ctime()
-pas="C:/Users/masafumi/Desktop/Lresult/"
+pas="D:/Lresult/over4/"
 print "topic_num"
 topic_num=raw_input()
 
-dictionary = corpora.Dictionary.load(pas+"nNVreview.dict")
-corpus = corpora.MmCorpus(pas+"nNVreview.mm")
+dictionary = corpora.Dictionary.load(pas+"corpus/nNVrev_o4b6.dict")
+corpus = corpora.MmCorpus(pas+"corpus/nNVrev_o4b6.mm")
 
 #use LSI
-lsi = models.LsiModel.load(pas+"LSIresult/train_nNV/topic_"+str(topic_num)+"/nNVreview"+str(topic_num)+".lsi")
+lsi = models.LsiModel.load(pas+"model/nNVrevo4b6_t"+str(topic_num)+".lsi")
 
 #calc topic sim
 header=[]
@@ -21,12 +21,12 @@ header.append("bus_id")
 for num in range(0,int(topic_num)):
 	header.append("t"+str(num).zfill(int(topic_num)/10))
 
-wfile=open("nNVrevtopic_LSI_"+str(topic_num)+".csv","wb")
+wfile=open(pas+"nNVrev_LSI_t"+str(topic_num)+".csv","wb")
 writer=csv.writer(wfile)
 writer.writerow(header)
 
 "NVreview.csv:[review_id,user_id,business_id,stars,date,texts]"
-ifile=open(pas+"NVreview.csv","r")
+ifile=open("D:/Lresult/NVreview.csv","r")
 idata=csv.reader(ifile)
 idata.next()
 k=0
