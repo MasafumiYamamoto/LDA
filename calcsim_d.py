@@ -31,7 +31,8 @@ def main(model_,bnum_,tnum_,train_,pas_):
 	writer.writerow(header)
 
 	"NVreview.csv:[review_id,user_id,business_id,stars,date,texts]"
-	ifile=open(pas+train+".csv","r")
+	#test file
+	ifile=open(pas+"NVreview.csv","r")
 	idata=csv.reader(ifile)
 	idata.next()
 	k=0
