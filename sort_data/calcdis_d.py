@@ -13,7 +13,7 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
 	bnum=int(bnum_)
 	rflag=int(rflag_)
 
-	ifile=open(pas+"subrev1000_LSI_b"+str(bnum)+"t"+str(tnum)+".csv","r")
+	ifile=open(pas+"subrev_1000_b"+str(bnum)+"t"+str(tnum)+".csv","r")
 	idata=csv.reader(ifile)
 	ilist=collections.Counter()
 	ilen=collections.Counter()
