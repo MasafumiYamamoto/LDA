@@ -13,7 +13,7 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
 	bnum=int(bnum_)
 	rflag=int(rflag_)
 
-	ifile=open(pas+"subrev_1000_b"+str(bnum)+"t"+str(tnum)+".csv","r")
+	ifile=open(pas+"subrev_1000_LSI_o4b"+str(bnum)+"t"+str(tnum)+".csv","r")
 	idata=csv.reader(ifile)
 	ilist=collections.Counter()
 	ilen=collections.Counter()
@@ -25,7 +25,7 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
 		ilen[line[0]]=numpy.linalg.norm(ilist[line[0]])
 		iseikai[line[0]]=line[2]
 		irate[line[0]]=line[3]
-	print "list",len(ilist),len(ilist[line[0]])
+	print "list",len(ilist)#,len(ilist[line[0]])
 	sfile=open("hoge.csv","wb")
 	if(rflag!=1):
 		sfile=open(pas+"mergeLSI_nrnt_b"+str(bnum)+"t"+str(tnum)+".csv","r")
@@ -38,19 +38,19 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
 	for line in sdata:
 		slist[line[0]]=numpy.array(map(float,line[1:]))
 		slen[line[0]]=numpy.linalg.norm(slist[line[0]])
-	print "slen",len(slist),len(slist[line[0]])
+	print "slen",len(slist)#,len(slist[line[0]])
 	l=0
 	if(rflag!=1):
-		os.mkdir(pas+"resnrnt_b"+str(bnum)+"t"+str(tnum))
+		os.mkdir(pas+"resnrnt_LSI_b"+str(bnum)+"t"+str(tnum))
 	elif(rflag==1):
-		os.mkdir(pas+"resrnt_b"+str(bnum)+"t"+str(tnum))
+		os.mkdir(pas+"resrnt_LSI_b"+str(bnum)+"t"+str(tnum))
 	for line in ilist:
 		l=l+1
 		outfile=open(pas+"hoge.csv","wb")
 		if(rflag!=1):
-			outfile=open(pas+"resnrnt_b"+str(bnum)+"t"+str(tnum)+"/"+line+".csv","wb")
+			outfile=open(pas+"resnrnt_LSI_b"+str(bnum)+"t"+str(tnum)+"/"+line+".csv","wb")
 		elif(rflag==1):
-			outfile=open(pas+"resrnt_b"+str(bnum)+"t"+str(tnum)+"/"+line+".csv","wb")
+			outfile=open(pas+"resrnt_LSI_b"+str(bnum)+"t"+str(tnum)+"/"+line+".csv","wb")
 		outwriter=csv.writer(outfile)
 		outwriter.writerow(["revid","shop","sim","seikai"])
 		for shop in slist:
@@ -60,7 +60,7 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
 				outwriter.writerow([line,shop,score,iseikai[line]])
 		if(l%100==0):
 			print l
-	outfile.close()
+		outfile.close()
 	ifile.close()
 	sfile.close()
 

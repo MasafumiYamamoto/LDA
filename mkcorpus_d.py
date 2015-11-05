@@ -19,7 +19,7 @@ def main(model_,bnum_,tnum_,train_,pas_):
 	subfile.close()
 
 	##remove stoplist
-	stopfile=open(pas+"stopwords/oevr4word.csv","r")
+	stopfile=open(pas+"stopwords/over4word.csv","r")
 	stopdata=csv.reader(stopfile)
 	stoplist=[]
 	for line in stopdata:

@@ -2,7 +2,7 @@ import csv
 import gensim
 
 #file pass
-pas="C:/Users/masafumi/Desktop/Lresult/"
+pas="D:/Lresult/s5/"
 #prepare
 dictionary=gensim.corpora.Dictionary.load(pas+"nNVreview.dict")
 corpus=gensim.corpora.MmCorpus(pas+"nNVreview.mm")

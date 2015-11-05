@@ -3,6 +3,7 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
     import glob
     import numpy
     import collections
+    import time
 
     path=rootpath_
     tnum=int(tnum_)
@@ -10,7 +11,7 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
     rflag=int(rflag_)
     tflag=int(tflag_)
 
-    rfile=open("D:/Lresult/subrev_1000.csv","r")
+    rfile=open(path+"subrev_1000.csv","r")
     rdata=csv.reader(rfile)
     rdata.next()
     rlist=collections.Counter()
@@ -25,9 +26,9 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
     writer=csv.writer(wfile)
     header=["bus_id"]
     for num in range(0,int(tnum)):
-        header.append("t"+str(num).zfill(3))
+        header.append("t"+str(num).zfill(tnum/10))
     writer.writerow(header)
-    slist=glob.glob(path+"b"+str(bnum)+"t"+str(tnum)+"_business/*")
+    slist=glob.glob(path+"b"+str(bnum)+"t"+str(tnum)+"_LSI_business/*")
     subnum=0
     revnum=0
     print "slist",len(slist)
@@ -62,7 +63,7 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
         ifile.close()
         snum=snum+1
         if(revnum%1000==0):
-            print revnum
+            print revnum,time.ctime()
     print "subnum",subnum
     wfile.close()
 

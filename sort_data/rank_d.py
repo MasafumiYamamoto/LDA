@@ -11,16 +11,16 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
 
 	wfile=open(pas+"hoge.csv","ab")
 	if(rflag!=1):
-		wfile=open(pas+"ranking_nrntb"+str(bnum)+"t"+str(N)+".csv","wb")
+		wfile=open(pas+"ranking_LSI_nrntb"+str(bnum)+"t"+str(N)+".csv","wb")
 	elif(rflag==1):
-		wfile=open(pas+"ranking_rntb"+str(bnum)+"t"+str(N)+".csv","wb")
+		wfile=open(pas+"ranking_LSI_rntb"+str(bnum)+"t"+str(N)+".csv","wb")
 	wri=csv.writer(wfile)
 	wri.writerow(["revid","mybus","ranking","topscore","topbus","myscore"])
 	revlist=[]
 	if(rflag!=1):
-		revlist=glob.glob(pas+"resnrnt_b"+str(bnum)+"t"+str(N)+"/*")
+		revlist=glob.glob(pas+"resnrnt_LSI_b"+str(bnum)+"t"+str(N)+"/*")
 	elif(rflag==1):
-		revlist=glob.glob(pas+"resrnt_b"+str(bnum)+"t"+str(N)+"/*")
+		revlist=glob.glob(pas+"resnrnt_LSI_b"+str(bnum)+"t"+str(N)+"/*")
 	l=0
 	for review in revlist:
 		ifile=open(review,"r")

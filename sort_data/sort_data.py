@@ -8,13 +8,13 @@ import time
 ###############
 #set variable
 ##############
-rootpath_="D:/Lresult/s5/"
+rootpath_="D:/Lresult/NV_s5/"
 print "tbum"
 tnum_=raw_input()
 bnum_=6
 rflag_=0
 tflag_=0
-infile_="nNVrev_LSI_o4b6_t"+str(tnum_)+".csv"
+infile_="NVrev_LSI_o4b6t"+str(tnum_)+".csv"
 
 print "start",time.ctime()
 mkeachbus_d.main(rootpath_,tnum_,bnum_,rflag_,tflag_,infile_)

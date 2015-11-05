@@ -10,20 +10,20 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
     path=str(rootpath_)
     bnum=int(bnum_)
 
-    rfile=open("D:/Lresult/subrev_1000.csv","r")
+    rfile=open(path+"subrev_1000.csv","r")
     rdata=csv.reader(rfile)
     rdata.next()
     rlist=collections.Counter()
     for line in rdata:
         rlist[line[0]]=1
     #print "rlist",len(rlist),time.ctime()
-    wfile=open(path+"subrev_1000_b"+str(bnum)+"t"+str(tnum)+".csv","wb")
+    wfile=open(path+"subrev_1000_LSI_o4b"+str(bnum)+"t"+str(tnum)+".csv","wb")
     writer=csv.writer(wfile)
     header=["rev_id","user_id","bus_id","rating","date"]
     for num in range(0,int(tnum)):
         header.append("t"+str(num).zfill(2))
     writer.writerow(header)
-    slist=glob.glob(path+"b"+str(bnum)+"t"+str(tnum)+"_business/*")
+    slist=glob.glob(path+"b"+str(bnum)+"t"+str(tnum)+"_LSI_business/*")
     subnum=0
     revnum=0
     print "slist",len(slist),time.ctime()
