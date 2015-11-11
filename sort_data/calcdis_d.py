@@ -1,4 +1,4 @@
-def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
+def main(rootpath_,tnum_,bnum_,rflag_,tflag_,model_):
 	import time
 	import csv
 	import math
@@ -12,8 +12,9 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
 	tnum=int(tnum_)
 	bnum=int(bnum_)
 	rflag=int(rflag_)
+	model=model_
 
-	ifile=open(pas+"subrev_1000_LSI_o4b"+str(bnum)+"t"+str(tnum)+".csv","r")
+	ifile=open(pas+"subrev_1000_"+model+"_o4b"+str(bnum)+"t"+str(tnum)+".csv","r")
 	idata=csv.reader(ifile)
 	ilist=collections.Counter()
 	ilen=collections.Counter()
@@ -28,9 +29,9 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
 	print "list",len(ilist)#,len(ilist[line[0]])
 	sfile=open("hoge.csv","wb")
 	if(rflag!=1):
-		sfile=open(pas+"mergeLSI_nrnt_b"+str(bnum)+"t"+str(tnum)+".csv","r")
+		sfile=open(pas+"merge"+model+"_nrnt_b"+str(bnum)+"t"+str(tnum)+".csv","r")
 	elif(rflag_==1):
-		sfile=open(pas+"mergeLSI_rnt_b"+str(bnum)+"t"+str(tnum)+".csv","r")
+		sfile=open(pas+"merge"+model+"_rnt_b"+str(bnum)+"t"+str(tnum)+".csv","r")
 	sdata=csv.reader(sfile)
 	slist=collections.Counter()
 	slen=collections.Counter()
@@ -41,16 +42,16 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
 	print "slen",len(slist)#,len(slist[line[0]])
 	l=0
 	if(rflag!=1):
-		os.mkdir(pas+"resnrnt_LSI_b"+str(bnum)+"t"+str(tnum))
+		os.mkdir(pas+"resnrnt_"+model+"_b"+str(bnum)+"t"+str(tnum))
 	elif(rflag==1):
-		os.mkdir(pas+"resrnt_LSI_b"+str(bnum)+"t"+str(tnum))
+		os.mkdir(pas+"resrnt_"+model+"_b"+str(bnum)+"t"+str(tnum))
 	for line in ilist:
 		l=l+1
 		outfile=open(pas+"hoge.csv","wb")
 		if(rflag!=1):
-			outfile=open(pas+"resnrnt_LSI_b"+str(bnum)+"t"+str(tnum)+"/"+line+".csv","wb")
+			outfile=open(pas+"resnrnt_"+model+"_b"+str(bnum)+"t"+str(tnum)+"/"+line+".csv","wb")
 		elif(rflag==1):
-			outfile=open(pas+"resrnt_LSI_b"+str(bnum)+"t"+str(tnum)+"/"+line+".csv","wb")
+			outfile=open(pas+"resrnt_"+model+"_b"+str(bnum)+"t"+str(tnum)+"/"+line+".csv","wb")
 		outwriter=csv.writer(outfile)
 		outwriter.writerow(["revid","shop","sim","seikai"])
 		for shop in slist:
@@ -65,14 +66,16 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
 	sfile.close()
 
 if __name__ == '__main__':
-    print "csvfile"
-    rootpath_=raw_input()
-    print "tnum"
-    tnum_=raw_input()
-    print "bnum"
-    bnum_=raw_input()
-    print "rflag"
-    rflag_=raw_input()
-    print "tflag"
-    tflag_=raw_input()
-    main(rootpath_,tnum_,bnum_,rflag_,tflag_)
+	print "csvfile"
+	rootpath_=raw_input()
+	print "tnum"
+	tnum_=raw_input()
+	print "bnum"
+	bnum_=raw_input()
+	print "rflag"
+	rflag_=raw_input()
+	print "tflag"
+	tflag_=raw_input()
+	print "model"
+	model_=raw_input()
+	main(rootpath_,tnum_,bnum_,rflag_,tflag_,model_)

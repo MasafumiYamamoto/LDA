@@ -1,4 +1,4 @@
-def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
+def main(rootpath_,tnum_,bnum_,rflag_,tflag_,model_):
 	import csv
 	import glob
 
@@ -8,19 +8,20 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
 	rflag=int(rflag_)
 	tflag=int(tflag_)
 	bnum=int(bnum_)
+	model=str(model_)
 
 	wfile=open(pas+"hoge.csv","ab")
 	if(rflag!=1):
-		wfile=open(pas+"ranking_LSI_nrntb"+str(bnum)+"t"+str(N)+".csv","wb")
+		wfile=open(pas+"ranking_"+model+"_nrntb"+str(bnum)+"t"+str(N)+".csv","wb")
 	elif(rflag==1):
-		wfile=open(pas+"ranking_LSI_rntb"+str(bnum)+"t"+str(N)+".csv","wb")
+		wfile=open(pas+"ranking_"+model+"_rntb"+str(bnum)+"t"+str(N)+".csv","wb")
 	wri=csv.writer(wfile)
 	wri.writerow(["revid","mybus","ranking","topscore","topbus","myscore"])
 	revlist=[]
 	if(rflag!=1):
-		revlist=glob.glob(pas+"resnrnt_LSI_b"+str(bnum)+"t"+str(N)+"/*")
+		revlist=glob.glob(pas+"resnrnt_"+model+"_b"+str(bnum)+"t"+str(N)+"/*")
 	elif(rflag==1):
-		revlist=glob.glob(pas+"resnrnt_LSI_b"+str(bnum)+"t"+str(N)+"/*")
+		revlist=glob.glob(pas+"resnrnt_"+model+"_b"+str(bnum)+"t"+str(N)+"/*")
 	l=0
 	for review in revlist:
 		ifile=open(review,"r")
@@ -54,14 +55,16 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
 	wfile.close()
 
 if __name__ == '__main__':
-    print "csvfile"
-    rootpath_=raw_input()
-    print "tnum"
-    tnum_=raw_input()
-    print "bnum"
-    bnum_=raw_input()
-    print "rflag"
-    rflag_=raw_input()
-    print "tflag"
-    tflag_=raw_input()
-    main(rootpath_,tnum_,bnum_,rflag_,tflag_)
+	print "csvfile"
+	rootpath_=raw_input()
+	print "tnum"
+	tnum_=raw_input()
+	print "bnum"
+	bnum_=raw_input()
+	print "rflag"
+	rflag_=raw_input()
+	print "tflag"
+	tflag_=raw_input()
+	print "model"
+	model_=raw_input()
+	main(rootpath_,tnum_,bnum_,rflag_,tflag_,model_)

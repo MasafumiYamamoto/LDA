@@ -1,4 +1,4 @@
-def main(rootpath_,tnum_,bnum_,rflag_,tflag_,infile_):
+def main(rootpath_,tnum_,bnum_,rflag_,tflag_,infile_,model_):
     import csv
     import collections
     import time
@@ -8,6 +8,7 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_,infile_):
     inputfile=str(infile_)
     path=str(rootpath_)
     bnum=int(bnum_)
+    model=str(model_)
 
     ifile=open(path+inputfile,"r")
     idata=csv.reader(ifile)
@@ -20,9 +21,9 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_,infile_):
         rlist[line[0]]=[line[0],line[1],line[2],line[3],line[4]]
     #print len(rlist),time.ctime()
     k=0
-    os.mkdir(path+"b"+str(bnum)+"t"+str(tnum)+"_LSI_business")
+    os.mkdir(path+"b"+str(bnum)+"t"+str(tnum)+"_"+model+"_business")
     for line in idata:
-        wfile=open(path+"b"+str(bnum)+"t"+str(tnum)+"_LSI_business/"+line[1]+".csv","ab")
+        wfile=open(path+"b"+str(bnum)+"t"+str(tnum)+"_"+model+"_business/"+line[1]+".csv","ab")
         writer=csv.writer(wfile)
         wlist=rlist[line[0]]
         wlist=wlist+line[2:]
@@ -46,4 +47,6 @@ if __name__ == '__main__':
     tflag_=raw_input()
     print "infile name"
     infile_=raw_input()
-    main(rootpath_,tnum_,bnum_,rflag_,tflag_)
+    print "mdoel"
+    model_=raw_input()
+    main(rootpath_,tnum_,bnum_,rflag_,tflag_,model_)

@@ -1,4 +1,4 @@
-def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
+def main(rootpath_,tnum_,bnum_,rflag_,tflag_,model_):
     import csv
     import glob
     import numpy
@@ -10,6 +10,7 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
     bnum=int(bnum_)
     rflag=int(rflag_)
     tflag=int(tflag_)
+    model=str(model_)
 
     rfile=open(path+"subrev_1000.csv","r")
     rdata=csv.reader(rfile)
@@ -20,15 +21,15 @@ def main(rootpath_,tnum_,bnum_,rflag_,tflag_):
     #print "rlist",len(rlist)
     wfile=open(path+"hoge.csv","wb")
     if(rflag!=1):
-        wfile=open(path+"mergeLSI_nrnt_b"+str(bnum)+"t"+str(tnum)+".csv","wb")
+        wfile=open(path+"merge"+model+"_nrnt_b"+str(bnum)+"t"+str(tnum)+".csv","wb")
     elif(rflag==1):
-        wfile=open(path+"mergeLSI_rnt_b"+str(bnum)+"t"+str(tnum)+".csv","wb")
+        wfile=open(path+"merge"+model+"_rnt_b"+str(bnum)+"t"+str(tnum)+".csv","wb")
     writer=csv.writer(wfile)
     header=["bus_id"]
     for num in range(0,int(tnum)):
         header.append("t"+str(num).zfill(tnum/10))
     writer.writerow(header)
-    slist=glob.glob(path+"b"+str(bnum)+"t"+str(tnum)+"_LSI_business/*")
+    slist=glob.glob(path+"b"+str(bnum)+"t"+str(tnum)+"_"+model+"_business/*")
     subnum=0
     revnum=0
     print "slist",len(slist)
@@ -78,4 +79,6 @@ if __name__ == '__main__':
     rflag_=raw_input()
     print "tflag"
     tflag_=raw_input()
-    main(rootpath_,tnum_,bnum_,rflag_,tflag_)
+    print "model"
+    model_=raw_input()
+    main(rootpath_,tnum_,bnum_,rflag_,tflag_,model_)

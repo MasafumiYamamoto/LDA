@@ -15,15 +15,16 @@ bnum_=6
 rflag_=0
 tflag_=0
 infile_="NVrev_LSI_o4b6t"+str(tnum_)+".csv"
+model_="LSI"
 
 print "start",time.ctime()
-mkeachbus_d.main(rootpath_,tnum_,bnum_,rflag_,tflag_,infile_)
+mkeachbus_d.main(rootpath_,tnum_,bnum_,rflag_,tflag_,infile_,model_)
 print "mkeachbus_d fin",time.ctime()
-ext_d.main(rootpath_,tnum_,bnum_,rflag_,tflag_)
+ext_d.main(rootpath_,tnum_,bnum_,rflag_,tflag_,model_)
 print "ext_d fin",time.ctime()
-mege_d.main(rootpath_,tnum_,bnum_,rflag_,tflag_)
+mege_d.main(rootpath_,tnum_,bnum_,rflag_,tflag_,model_)
 print "mege_d fin",time.ctime()
-calcdis_d.main(rootpath_,tnum_,bnum_,rflag_,tflag_)
+calcdis_d.main(rootpath_,tnum_,bnum_,rflag_,tflag_,model_)
 print "calcdis_d fin",time.ctime()
-rank_d.main(rootpath_,tnum_,bnum_,rflag_,tflag_)
+rank_d.main(rootpath_,tnum_,bnum_,rflag_,tflag_,model_)
 print "rank_d fin",time.ctime()
