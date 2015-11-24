@@ -7,20 +7,20 @@ def main(model_,bnum_,tnum_,train_,pas_):
 	train=str(train_)
 	pas=str(pas_)
 
-    dictionary = corpora.Dictionary.load(pas+train+"_o4b"+str(bnum)+"t"+str(tnum)+".dict")
-    corpus = corpora.MmCorpus(pas+train+"_o4b"+str(bnum)+"t"+str(tnum)+".mm")
+    dictionary = corpora.Dictionary.load(pas+train+"_o4b"+str(bnum)+".dict")
+    corpus = corpora.MmCorpus(pas+train+"_o4b"+str(bnum)+".mm")
     tfidf = models.TfidfModel(corpus) # step 1 -- initialize a modl
     corpus_tfidf=tfidf[corpus]
     print "tfidf fin",time.ctime()
 
-    if(model=="lsi"):
-        lsi=models.LsiModel(corpus=corpus_tfidf, id2word=dictionary, num_topics=tnum)
-        corpus_lsi=lsi[corpus_tfidf]
-        lsi.save(pas+train+"_o4b"+str(bnum)+"t"+str(tnum)+".lsi")
-    if(model=="lda"):
-        lda=models.LdaModel(corpus=corpus_tfidf, id2word=dictionary, num_topics=tnum)
-        corpus_lda=lda[corpus_tfidf]
-        lda.save(pas+train+"_o4b"+str(bnum)+"t"+str(tnum)+".lda")
+    #if(model=="lsi"):
+    lsi=models.LsiModel(corpus=corpus_tfidf, id2word=dictionary, num_topics=tnum)
+    corpus_lsi=lsi[corpus_tfidf]
+    lsi.save(pas+train+"_o4b"+str(bnum)+"t"+str(tnum)+".lsi")
+    #if(model=="lda"):
+    lda=models.LdaModel(corpus=corpus_tfidf, id2word=dictionary, num_topics=tnum)
+    corpus_lda=lda[corpus_tfidf]
+    lda.save(pas+train+"_o4b"+str(bnum)+"t"+str(tnum)+".lda")
 
 if __name__ == '__main__':
     print "model"

@@ -11,8 +11,8 @@ def main(model_,bnum_,tnum_,train_,pas_):
 
 	print "start",time.ctime()
 
-	dictionary = corpora.Dictionary.load(pas+train+"_o4b"+str(bnum)+"t"+str(tnum)+".dict")
-    corpus = corpora.MmCorpus(pas+train+"_o4b"+str(bnum)+"t"+str(tnum)+".mm")
+	dictionary = corpora.Dictionary.load(pas+train+"_o4b"+str(bnum)+".dict")
+    corpus = corpora.MmCorpus(pas+train+"_o4b"+str(bnum)+".mm")
 
 	#use LSI
 	lsi = models.LsiModel.load(pas+train+"_o4b"+str(bnum)+"t"+str(tnum)+".lsi")
